@@ -36,3 +36,24 @@ with app.app_context():
 
         print("Database seeded successfully!")
 
+@app.route("/")
+def home():
+    orders = Order.query.all()
+    output = ""
+
+    for order in orders:
+        output += f"<h2>Order ID: {order.id}</h2>"
+        output += f"<p>User: {order.user.username}</p>"
+        output += f"<p>Total Price: {order.total_price}</p>"
+        output += "<ul>"
+        for item in order.items:
+            output += f"<li>{item.product.name} - Quantity: {item.quantity}</li>"
+        output += "</ul><hr>"
+
+    return output
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
