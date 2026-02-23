@@ -23,7 +23,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "username": self.username,
-                        "email": self.email
+            "email": self.email
         }
 
 
@@ -106,6 +106,5 @@ class OrderItem(db.Model):
             "quantity": self.quantity,
             "price_per_unit": self.product.price
         }
-
 
 
